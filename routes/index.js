@@ -26,14 +26,14 @@ router.post('/signup', async function(req, res, next) {
     });
     var userSaved = await newUser.save();
     // MAJ de la req.session
-    // req.session.userId = userSaved._id;
+    req.session.userId = userSaved._id;
     req.session.email = userSaved.email;
     req.session.username = userSaved.username
     req.session.log = true
-
+    req.session.panierUser = []
     console.log(userSaved)
 
-    res.redirect('/');
+    res.redirect('/home');
 });
 
 
@@ -59,9 +59,6 @@ router.post('/signin', async function(req, res, next) {
     };
 });
 
-
-
-
 /*GET log out */
 router.get('/logout', function(req, res, next) {
     panierBackend = []
@@ -83,13 +80,20 @@ router.get('/home', function(req, res, next) {
 
 /* POST result page. */
 router.post('/go', async function(req, res, next) {
+
     console.log("go page result", req.body)
+        //premeire lettre en uppercase
     var firstLetterUp = function(ville) {
         return ville.charAt(0).toUpperCase() + ville.slice(1)
     };
     var train = await journeysModel.find({ departure: firstLetterUp(req.body.fromCity), arrival: firstLetterUp(req.body.toCity), date: req.body.date })
-    console.log("requet : ", train)
-    res.render('result', { train });
+    if (train.length == 0) {
+        res.render('errorpage');
+    } else {
+        res.render('result', { train });
+    };
+    // var date = dateFormat(req.body.date)
+    // dateJourMois = req.body.date + "/" + req.body.date
 });
 
 var panierBackend = []
@@ -98,24 +102,17 @@ router.get('/mytickets', async function(req, res, next) {
     console.log("query : ", req.query)
 
     // req.session.journey.push(req.query.id)
-
     panierBackend.push(await journeysModel.findById(req.query.id))
-
-
     req.session.panierUser.push(panierBackend[panierBackend.length - 1]._id)
     console.log("heo session", panierBackend)
-
     res.render('mytickets', { panierFront: panierBackend });
 });
 
 /* GET confim page. */
 router.get('/confirm', async function(req, res, next) {
-    console.log("JEREMY", req.session)
-
-
 
     await usersModel.updateOne({ _id: req.session.userId }, { journey: req.session.panierUser })
-
+    req.session.panierUser = []
     res.redirect('/lastTrips');
 });
 
@@ -201,25 +198,5 @@ router.get('/save', async function(req, res, next) {
 });
 
 
-// Cette route est juste une verification du Save.
-// Vous pouvez choisir de la garder ou la supprimer.
-router.get('/result', function(req, res, next) {
-
-    // Permet de savoir combien de trajets il y a par ville en base
-    for (i = 0; i < city.length; i++) {
-
-        journeyModel.find({ departure: city[i] }, //filtre
-
-            function(err, journey) {
-
-                console.log(`Nombre de trajets au départ de ${journey[0].departure} : `, journey.length);
-            }
-        )
-
-    }
-
-
-    res.render('index', { title: 'Express' });
-});
 
 module.exports = router;
