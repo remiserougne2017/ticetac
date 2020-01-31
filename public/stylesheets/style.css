@@ -8,6 +8,10 @@ body {
 
 /* CSS HOMEPAGE */
 
+img {
+    height: 300px;
+}
+
 #logo {
     height: 20px;
     margin: 5px;
@@ -73,7 +77,6 @@ body {
 
 /*result*/
 
-
 .card-text {
     padding: 0 50px;
     vertical-align: center;
@@ -83,33 +86,6 @@ body {
     margin-left: auto;
 }
 
-<<<<<<< HEAD
-/* MYTICKETS POPUP */
-
-#addButton:hover{
-    background-color : gainsboro;
-    border : none;
-}
-
-#modal {
-    margin-top : 50px;
-    height: 400px;
-    width: 600px;
-    background-color: white;
-    border-radius :2%;
-    font-family: helvetica;
-    text-align: center;
-    position : absolute;
-    display : none;
-
-}
-
-#modal h1{
-    padding-top : 40px;
-}
-
-=======
 input::first-letter {
     text-transform: uppercase;
 }
->>>>>>> c4f689fb504070a3c3afa1186fe05fd179204dbd

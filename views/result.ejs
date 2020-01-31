@@ -28,22 +28,21 @@
 
             <div class="row">
 
-                <div class="input-group col-12 mb-3">
-                    <h4 style="color:white">Ticket available on :
-
-
+                <div class="input-group offset-1 col-12 mb-3">
+                    <h4 style="color:white"> Ticket available on :
+                        <%=date%>
                     </h4>
                 </div>
                 <div class="d-flex justify-content-center" style="width:100%">
-                    <ul class="list-group col-12 col-lg-6" style="list-style-type: none">
+                    <ul class="list-group align-items-center col-12 " style="list-style-type: none ">
 
                         <%for(var i=0;i<train.length;i++){ %>
 
-                            <li class="list-group-item d-flex justify-content-between align-items-center mb-3">
-                                <span class="font-weight-bold"><%=train[i].departure%> / <%=train[i].arrival%></span>
-                                <span class="departure">Train departure at : <%=train[i].departureTime%></span>
-                                <div class="p-1">
-                                    <span class="font-weight-bold"> <%=train[i].price%>€</span>
+                            <li class="list-group-item d-flex justify-content-between align-items-center mb-3 " style="width:80% ">
+                                <span class="font-weight-bold "><%=train[i].departure%> / <%=train[i].arrival%></span>
+                                <span class="departure ">Train departure at : <%=train[i].departureTime%></span>
+                                <div class="p-1 ">
+                                    <span class="font-weight-bold "> <%=train[i].price%>€</span>
                                     <a href="/mytickets?id=<%=train[i]._id%>"><span class="btn btn-danger ml-3">Ok</span> </a>
                                 </div>
                             </li>

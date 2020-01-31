@@ -96,11 +96,14 @@ router.post('/Congrats', async function(req, res, next) {
     var firstLetterUp = function(ville) {
         return ville.charAt(0).toUpperCase() + ville.slice(1)
     };
+    //interroge la bdd
     var train = await journeysModel.find({ departure: firstLetterUp(req.body.fromCity), arrival: firstLetterUp(req.body.toCity), date: req.body.date })
+
     if (train.length == 0) {
         res.render('errorpage');
     } else {
-        res.render('result', { train });
+
+        res.render('result', { train, date: req.body.date.split('-').reverse().join('/').slice(0, 5) });
     };
     // var date = dateFormat(req.body.date)
     // dateJourMois = req.body.date + "/" + req.body.date
@@ -113,6 +116,7 @@ router.get('/mytickets', async function(req, res, next) {
 
     // req.session.journey.push(req.query.id)
     panierBackend.push(await journeysModel.findById(req.query.id))
+
     req.session.panierUser.push(panierBackend[panierBackend.length - 1]._id)
     console.log("heo session", panierBackend)
     res.render('mytickets', { panierFront: panierBackend });
@@ -120,9 +124,13 @@ router.get('/mytickets', async function(req, res, next) {
 
 /* GET confim page. */
 router.get('/confirm', async function(req, res, next) {
+    var userJourney = await usersModel.findById(req.session.userId)
+    var trajetBdd = req.session.panierUser.concat(userJourney.journey)
+    console.log("confirm var", userJourney, trajetBdd)
+    await usersModel.updateOne({ _id: req.session.userId }, { journey: trajetBdd })
 
-    await usersModel.updateOne({ _id: req.session.userId }, { journey: req.session.panierUser })
     req.session.panierUser = []
+
     res.redirect('/lastTrips');
 });
 
@@ -131,8 +139,7 @@ router.get('/confirm', async function(req, res, next) {
 router.get('/lastTrips', async function(req, res, next) {
 
     var trajetUser = await usersModel.findById(req.session.userId).populate('journey').exec();
-
-    console.log("tra : ", trajetUser)
+    console.log(trajetUser)
     res.render('lastTrips', { trajet: trajetUser.journey });
 });
 
