@@ -72,7 +72,7 @@ router.get('/', function(req, res, next) {
     if (req.session.log == true) {
         res.redirect('/home')
     } else {
-        res.render('login')
+        res.render('login', { mess, mess1, email })
     }
 
 });
