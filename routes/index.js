@@ -61,6 +61,7 @@ router.post('/signin', async function(req, res, next) {
 
 /*GET log out */
 router.get('/logout', function(req, res, next) {
+    req.session.log = false
     panierBackend = []
     res.redirect('/');
 });
@@ -68,13 +69,23 @@ router.get('/logout', function(req, res, next) {
 /* GET login page. */
 router.get('/', function(req, res, next) {
 
-    console.log("Hey Redirect : ", req.session)
-    res.render('login', { mess, mess1, email });
+    if (req.session.log == true) {
+        res.redirect('/home')
+    } else {
+        res.render('login')
+    }
+
 });
 
 /* GET home page. */
 router.get('/home', function(req, res, next) {
-    res.render('calendar', { title: 'Express' });
+
+    if (req.session.log == true) {
+        res.render('calendar', { title: 'Express' })
+    } else {
+        res.render('login')
+    }
+
 });
 
 
