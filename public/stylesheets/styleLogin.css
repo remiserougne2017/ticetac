@@ -1,0 +1,54 @@
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    width: 100vw;
+    height: 100vh;
+    background: -webkit-linear-gradient(top,  #cee6ff 1%,#75b5f4 70%,#4096ee 100%); /* Chrome10-25,Safari5.1-6 */
+}
+
+/* HEADER */
+
+#logo {
+    height: 20px;
+    margin: 5px;
+}
+
+#ticketac {
+    font-weight: bold;
+}
+
+#connection {
+    font-weight: bold;
+    margin-right: 30px;
+    color: red;
+}
+
+#mylasttrip {
+    font-weight: bold;
+    margin-right: 20px;
+    color: black;
+}
+
+.formArea {
+    width: 80%;
+}
+
+/* SIGN IN SIGN UP */
+
+.container{
+    width : 100vw;
+    height : 100vh;
+    display : flex;
+    flex-direction: column;
+    align-items : center;
+    justify-content: center;
+    
+} 
+
+.titleForm{
+    color: white;
+}
+
+.form-control{
+    padding: 0.375rem 3rem 0.375rem 0.75rem!important;
+
+}
