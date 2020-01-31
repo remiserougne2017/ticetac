@@ -20,55 +20,59 @@
     <!-- HEADER -->
     <%- include('header'); %>
 
-    <div class="container">
-        <div class="row">
-            <!-- SIGN IN AREA -->
-            <div class="col-12 col-sm-6 text-center">
-                <div class="formArea">
-                    <h4 class="titleForm">Sign-in:</h4>
-                    <form action="/signin" method="POST">
-                        <div class="form-group">
-                            <input name="email" type="email" class="form-control" placeholder="Email" value="">
-                        </div>
-                        <div class="form-group">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                    </form>
-                </div>
-            </div>
+        <div class="container">
+            <div class="row">
+                <!-- SIGN IN AREA -->
+                <div class="col-12 col-sm-6 text-center">
+                    <div class="formArea">
+                        <h4 class="titleForm">Sign-in:</h4>
+                        <form action="/signin" method="POST">
+                            <div class="form-group">
+                                <input name="email" type="email" class="form-control" placeholder="Email" value="">
+                            </div>
+                            <div class="form-group">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                                <p>
+                                    <%=mess%>
+                                </p>
+                            </div>
 
-            <!-- SIGN UP AREA -->
-            <div class="col-12 col-sm-6 text-center">
-                <div class="formArea">
-                    <h4 class="titleForm">Sign-up:</h4>
-                    <form action="/signup" method="POST">
-                        <div class="form-group">
-                            <input name="name" type="text" class="form-control" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <input name="firstname" type="text" class="form-control" placeholder="FirstName">
-                        </div>
-                        <div class="form-group">
-                            <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <input name="password" type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                    </form>
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
 
-            <!-- end -->
+                <!-- SIGN UP AREA -->
+                <div class="col-12 col-sm-6 text-center">
+                    <div class="formArea">
+                        <h4 class="titleForm">Sign-up:</h4>
+                        <form action="/signup" method="POST">
+                            <div class="form-group">
+                                <input name="name" type="text" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <input name="firstname" type="text" class="form-control" placeholder="FirstName">
+                            </div>
+                            <div class="form-group">
+                                <input name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-danger">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- end -->
+            </div>
         </div>
-    </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="./javascripts/script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="./javascripts/script.js"></script>
 </body>
 
 </html>

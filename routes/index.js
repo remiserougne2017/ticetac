@@ -69,7 +69,7 @@ router.get('/logout', function(req, res, next) {
 router.get('/', function(req, res, next) {
 
     console.log("Hey Redirect : ", req.session)
-    res.render('login', );
+    res.render('login', { mess, mess1, email });
 });
 
 /* GET home page. */
@@ -79,10 +79,9 @@ router.get('/home', function(req, res, next) {
 
 
 /* POST result page. */
-router.post('/go', async function(req, res, next) {
+router.post('/Congrats', async function(req, res, next) {
 
-    console.log("go page result", req.body)
-        //premeire lettre en uppercase
+    //première lettre en uppercase
     var firstLetterUp = function(ville) {
         return ville.charAt(0).toUpperCase() + ville.slice(1)
     };
